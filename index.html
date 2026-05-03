@@ -14,7 +14,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
       background: #fff;
       border-radius: 16px;
@@ -22,22 +22,28 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
     h1 {
-      font-size: 24px;
+      font-size: 26px;
       color: #BD5E78;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .updated {
       font-size: 13px;
       color: #999;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     h2 {
       font-size: 17px;
       color: #BD5E78;
-      margin-top: 32px;
-      margin-bottom: 12px;
+      margin-top: 30px;
+      margin-bottom: 10px;
       padding-bottom: 6px;
       border-bottom: 1px solid #f0e8eb;
+    }
+    h3 {
+      font-size: 15px;
+      color: #555;
+      margin-top: 18px;
+      margin-bottom: 6px;
     }
     p, li {
       font-size: 14.5px;
@@ -58,6 +64,7 @@
       border: 1px solid #e8e0e3;
       padding: 10px 12px;
       text-align: left;
+      vertical-align: top;
     }
     th {
       background: #fdf5f7;
@@ -71,6 +78,18 @@
       margin-top: 24px;
     }
     .contact p { margin-bottom: 4px; }
+    hr {
+      border: none;
+      border-top: 1px solid #f0e8eb;
+      margin: 28px 0;
+    }
+    code {
+      background: #f5efef;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #8a4458;
+    }
     @media (max-width: 600px) {
       body { padding: 12px; }
       .container { padding: 24px 18px; }
@@ -80,112 +99,204 @@
 <body>
   <div class="container">
     <h1>개인정보처리방침</h1>
-    <p class="updated">시행일: 2026년 3월 29일 | 최종 수정: 2026년 3월 22일</p>
+    <p class="updated">시행일: 2026년 5월 3일 | 버전: v1.0</p>
 
-    <p><strong>하루얼굴</strong>(이하 "앱")은 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 등 관련 법령을 준수합니다. 본 방침은 앱이 수집하는 개인정보의 항목, 목적, 보유 기간 및 이용자의 권리를 안내합니다.</p>
+    <p><strong>하루얼굴</strong>(Daily Face Journal, 이하 "서비스")은 이용자의 개인정보를 소중히 다루며, 「개인정보 보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등 관련 법령을 준수합니다. 본 방침은 서비스가 어떤 정보를 어떤 목적으로 수집·이용·보관·파기하는지를 투명하게 안내합니다.</p>
 
-    <h2>1. 수집하는 개인정보 항목 및 목적</h2>
+    <h2>1. 운영자 및 연락처</h2>
+    <ul>
+      <li><strong>서비스명</strong>: 하루얼굴 (Daily Face Journal)</li>
+      <li><strong>패키지명</strong>: <code>app.fotd.harueolgul</code></li>
+      <li><strong>운영자</strong>: ghk89 (개인 개발자)</li>
+      <li><strong>개인정보 보호책임자</strong>: ghk89</li>
+      <li><strong>문의 이메일</strong>: jkh200812394@gmail.com</li>
+    </ul>
+    <p>개인정보 관련 문의·열람·정정·삭제·처리정지 요청은 위 이메일로 접수하실 수 있으며, 영업일 기준 7일 이내 답변드립니다.</p>
+
+    <h2>2. 수집하는 개인정보 항목</h2>
+    <p>서비스는 아래 항목을 수집하며, 명시되지 않은 정보는 수집하지 않습니다.</p>
+
+    <h3>2-1. 얼굴 사진 (필수)</h3>
+    <ul>
+      <li><strong>수집 방법</strong>: 이용자가 카메라로 촬영하거나 갤러리에서 직접 선택</li>
+      <li><strong>이용 목적</strong>: 얼굴 분석(MediaPipe 기반 랜드마크 추출), 운세·감정 점수 산출, 일일 기록 저장</li>
+      <li><strong>저장 위치</strong>: Google Cloud Storage 버킷(<code>harueolgul-room-photos</code>, 서울 리전)에 Signed URL 형태로 저장</li>
+      <li><strong>공개 범위</strong>: 본인만 열람 (단, "함께" 탭에 직접 게시한 사진은 해당 방 멤버에게만 공개)</li>
+    </ul>
+
+    <h3>2-2. 위치 정보 (선택)</h3>
+    <ul>
+      <li><strong>수집 항목</strong>: 대략적 위치 + 정확한 위치 (이용자가 권한을 허용한 경우에만)</li>
+      <li><strong>이용 목적</strong>: 날씨 컨텍스트 보정, 운세 인사말 개인화</li>
+      <li><strong>저장 형태</strong>: 좌표가 아닌 텍스트(예: "서울 관악구")로 가공 후 저장</li>
+      <li><strong>거부 가능</strong>: 권한을 거부해도 대부분의 핵심 기능은 정상 이용 가능</li>
+    </ul>
+
+    <h3>2-3. 계정 정보 (Google 로그인 시)</h3>
+    <ul>
+      <li><strong>수집 항목</strong>: 이름, 이메일 주소, Google 사용자 ID(sub)</li>
+      <li><strong>이용 목적</strong>: 본인 인증, 기기 간 데이터 동기화, 푸시 알림 토큰 매핑</li>
+      <li><strong>수집 방법</strong>: Google Sign-In OAuth 인증 흐름</li>
+    </ul>
+
+    <h3>2-4. 프로필 정보 (선택, 직접 입력)</h3>
+    <ul>
+      <li>닉네임, MBTI, 어조(톤) 선호, 생년(연도 단위)</li>
+      <li>분석 결과 톤 조정 및 개인화 콘텐츠 제공 목적</li>
+      <li>모두 선택 입력이며 미입력 시에도 서비스 이용에 제한이 없습니다.</li>
+    </ul>
+
+    <h3>2-5. 서비스 이용 기록</h3>
+    <ul>
+      <li>일일 사진·메모·감정·점수 (본인만 열람)</li>
+      <li>"함께" 탭 게시글 (해당 방 멤버에게 공유)</li>
+      <li>분석 히스토리, 뱃지 획득 기록, 클로버(🍀) 잔액</li>
+    </ul>
+
+    <h3>2-6. 사용 행태 및 기기 정보 (자동 수집)</h3>
+    <ul>
+      <li><strong>Firebase Crashlytics</strong>: 앱 크래시 발생 시 스택 트레이스, 디바이스 모델, OS 버전 (안정성 개선 목적)</li>
+      <li><strong>Firebase Cloud Messaging</strong>: 푸시 알림 발송용 디바이스 토큰</li>
+      <li><strong>광고 ID (AAID)</strong>: Google AdMob 보상형 광고 노출 빈도 제한 목적</li>
+    </ul>
+
+    <h2>3. 개인정보 수집·이용 목적</h2>
     <table>
-      <tr>
-        <th>수집 항목</th>
-        <th>수집 목적</th>
-        <th>수집 방법</th>
-      </tr>
-      <tr>
-        <td>Google 계정 정보 (이름, 이메일, 프로필 사진)</td>
-        <td>회원 식별 및 로그인, 클라우드 동기화</td>
-        <td>Google 로그인 시 자동 수집</td>
-      </tr>
-      <tr>
-        <td>얼굴 사진</td>
-        <td>AI 얼굴 분석 (운세, 감정, 표정 분석)</td>
-        <td>이용자가 직접 촬영 또는 갤러리에서 선택</td>
-      </tr>
-      <tr>
-        <td>기기 FCM 토큰</td>
-        <td>푸시 알림 전송</td>
-        <td>앱 설치 시 자동 생성</td>
-      </tr>
-      <tr>
-        <td>대략적 위치 정보</td>
-        <td>날씨 기반 맞춤 인사말 제공</td>
-        <td>이용자 동의 후 수집 (선택)</td>
-      </tr>
-      <tr>
-        <td>분석 결과, 일기, 설정</td>
-        <td>서비스 기능 제공 및 클라우드 백업</td>
-        <td>앱 사용 중 생성</td>
-      </tr>
+      <tr><th>목적</th><th>이용 항목</th></tr>
+      <tr><td>얼굴 분석 및 운세·감정 콘텐츠 제공</td><td>얼굴 사진, 프로필 정보</td></tr>
+      <tr><td>본인 인증 및 계정 관리</td><td>계정 정보</td></tr>
+      <tr><td>기록 저장 및 클라우드 동기화</td><td>사진, 기록 데이터, 계정 정보</td></tr>
+      <tr><td>"함께" 공유 공간 운영</td><td>사진, 게시글, 닉네임</td></tr>
+      <tr><td>푸시 알림 발송</td><td>FCM 토큰, 계정 정보</td></tr>
+      <tr><td>광고 노출 및 수익화</td><td>광고 ID, 대략적 위치, 기기 정보</td></tr>
+      <tr><td>서비스 안정성 개선</td><td>크래시 로그, 기기 정보</td></tr>
     </table>
+    <p>서비스는 위 목적 외의 용도로 개인정보를 이용하지 않으며, 목적이 변경될 경우 사전에 고지하고 동의를 받습니다.</p>
 
-    <h2>2. 개인정보의 보유 및 파기</h2>
+    <h2>4. 개인정보 보유 및 파기</h2>
+    <h3>4-1. 보유 기간</h3>
     <ul>
-      <li><strong>기기 내 데이터</strong>: 앱 삭제 시 자동 삭제됩니다.</li>
-      <li><strong>서버 데이터</strong>: 계정 삭제 요청 시 즉시 삭제됩니다.</li>
-      <li><strong>얼굴 사진</strong>: 분석 처리 후 서버에 저장되지 않습니다. 클라우드 동기화 시에도 사진은 제외됩니다.</li>
-      <li><strong>자동 삭제</strong>: 이용자가 설정한 기간(30일/90일)에 따라 오래된 기록이 자동 삭제됩니다.</li>
+      <li><strong>활성 이용자</strong>: 서비스 이용 기간 동안 보유</li>
+      <li><strong>계정 삭제 시</strong>: 즉시 파기 (앱 → 마이탭 → 계정 삭제)</li>
+      <li><strong>장기 미이용 계정</strong>: 마지막 로그아웃 후 6개월 이상 비활성 시 안내 후 삭제 검토 (현재 정책 정비 중이며, 시행 시 사전 공지)</li>
+      <li><strong>Crashlytics 크래시 로그</strong>: 수집일로부터 90일 (Firebase 기본 정책에 따라 자동 삭제)</li>
+    </ul>
+    <h3>4-2. 파기 절차 및 방법</h3>
+    <ul>
+      <li>이용자가 계정 삭제를 요청하면 서버 엔드포인트(<code>DELETE /users/me</code>)가 호출되어 Firestore 내 모든 본인 데이터와 GCS 내 본인 사진이 즉시 삭제됩니다.</li>
+      <li>전자적 파일 형태의 정보는 복구 불가능한 방식으로 영구 삭제합니다.</li>
+      <li>다만 관련 법령(전자상거래법 등)에 따라 보존이 의무화된 정보가 있을 경우 해당 기간 동안만 분리 보관 후 파기합니다.</li>
     </ul>
 
-    <h2>3. 개인정보의 제3자 제공</h2>
-    <p>앱은 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우는 예외입니다:</p>
-    <ul>
-      <li>이용자가 사전에 동의한 경우</li>
-      <li>법령에 의해 요구되는 경우</li>
-    </ul>
-
-    <h2>4. 제3자 서비스 이용</h2>
-    <p>앱은 서비스 운영을 위해 다음 제3자 서비스를 이용합니다:</p>
+    <h2>5. 제3자 제공 및 처리 위탁</h2>
+    <p>서비스는 이용자의 개인정보를 제3자에게 <strong>판매하거나 제공하지 않습니다.</strong> 다만 서비스 운영을 위해 아래와 같이 일부 업무를 위탁하고 있습니다.</p>
     <table>
       <tr>
-        <th>서비스</th>
-        <th>용도</th>
-        <th>처리 정보</th>
+        <th>수탁자</th><th>위탁 업무</th><th>처리 항목</th><th>처리 위치</th>
       </tr>
       <tr>
-        <td>Google Firebase</td>
-        <td>인증, 푸시 알림, 오류 분석</td>
-        <td>계정 정보, FCM 토큰, 오류 로그</td>
-      </tr>
-      <tr>
-        <td>Google Cloud</td>
-        <td>서버 운영, 데이터 저장</td>
-        <td>분석 결과, 프로필, 설정</td>
+        <td>Google Cloud Platform (Cloud Run / Firestore / GCS)</td>
+        <td>서버 연산 및 데이터 저장</td>
+        <td>사진, 기록, 계정 정보 등</td>
+        <td>서울 (asia-northeast3)</td>
       </tr>
       <tr>
         <td>Google AdMob</td>
-        <td>보상형 광고 제공</td>
-        <td>광고 식별자, 기기 정보</td>
+        <td>보상형 광고 노출</td>
+        <td>광고 ID, 기기 정보, 대략적 위치</td>
+        <td>글로벌</td>
+      </tr>
+      <tr>
+        <td>Firebase Crashlytics</td>
+        <td>크래시 분석</td>
+        <td>크래시 스택, 기기 정보</td>
+        <td>글로벌</td>
+      </tr>
+      <tr>
+        <td>Firebase Cloud Messaging</td>
+        <td>푸시 알림 전송</td>
+        <td>FCM 토큰</td>
+        <td>글로벌</td>
+      </tr>
+      <tr>
+        <td>Google Sign-In</td>
+        <td>로그인 인증</td>
+        <td>이름, 이메일, Google 사용자 ID</td>
+        <td>글로벌</td>
       </tr>
     </table>
+    <p>위탁 업무 수행 시 「개인정보 보호법」 제26조에 따라 개인정보가 안전하게 관리되도록 필요한 사항을 규정하고 감독합니다. 일부 수탁자는 미국 등 해외에 데이터센터를 두고 있으며, 이는 서비스 제공 및 안정성 유지를 위해 필수적입니다.</p>
 
-    <h2>5. 이용자의 권리</h2>
-    <p>이용자는 언제든지 다음 권리를 행사할 수 있습니다:</p>
+    <h2>6. 이용자의 권리와 행사 방법</h2>
+    <p>이용자는 언제든지 아래 권리를 행사하실 수 있습니다.</p>
     <ul>
-      <li><strong>계정 삭제</strong>: 앱 내 [기록 탭 → 설정 → 계정 삭제]에서 모든 서버 데이터를 즉시 삭제할 수 있습니다.</li>
-      <li><strong>데이터 조회</strong>: 앱 내에서 저장된 분석 기록, 프로필 정보를 확인할 수 있습니다.</li>
-      <li><strong>동의 철회</strong>: 기기 설정에서 카메라, 위치 등 권한을 언제든 해제할 수 있습니다.</li>
-      <li><strong>알림 거부</strong>: 앱 설정에서 푸시 알림을 끌 수 있습니다.</li>
+      <li><strong>열람</strong>: 앱 → 마이탭 → 내 정보 화면에서 직접 확인</li>
+      <li><strong>정정</strong>: 앱 내 프로필 편집 화면에서 직접 수정</li>
+      <li><strong>삭제</strong>: 앱 → 마이탭 → 계정 삭제 (즉시 처리)</li>
+      <li><strong>동기화 중단</strong>: 앱 → 설정 → 클라우드 동기화 OFF</li>
+      <li><strong>푸시 알림 거부</strong>: 시스템 설정 또는 앱 내 알림 토글</li>
+      <li><strong>위치 권한 철회</strong>: 시스템 설정 → 앱 권한</li>
+      <li><strong>처리 정지 요청</strong>: 위 이메일로 요청</li>
+    </ul>
+    <p>만 14세 미만 아동의 경우 법정대리인이 권리를 대신 행사할 수 있습니다.</p>
+
+    <h2>7. 만 14세 미만 아동의 개인정보</h2>
+    <p>본 서비스는 <strong>만 14세 이상</strong>을 대상으로 합니다.</p>
+    <ul>
+      <li>회원 가입 시 연령 확인 절차(<code>ageVerified</code>)를 거칩니다.</li>
+      <li>만 14세 미만 아동의 가입이 확인될 경우 계정과 모든 관련 데이터를 즉시 삭제하며, 가능한 경우 법정대리인에게 통지합니다.</li>
+      <li>보호자께서 자녀의 가입을 확인하신 경우 위 이메일로 알려주시면 즉시 처리해 드립니다.</li>
     </ul>
 
-    <h2>6. 만 14세 미만 아동</h2>
-    <p>앱은 만 14세 미만 아동의 개인정보를 수집하지 않습니다. 앱 이용 시 만 14세 이상임을 확인하는 절차를 거칩니다.</p>
-
-    <h2>7. 개인정보의 안전성 확보 조치</h2>
+    <h2>8. 개인정보의 안전성 확보 조치</h2>
     <ul>
-      <li>모든 통신은 HTTPS(TLS)로 암호화됩니다.</li>
-      <li>민감 정보는 기기 내 암호화된 저장소에 보관됩니다.</li>
-      <li>서버 데이터는 Google Cloud의 관리형 암호화로 보호됩니다.</li>
-      <li>접근 권한은 인증된 사용자에게만 부여됩니다.</li>
+      <li><strong>전송 구간 암호화</strong>: 모든 통신은 HTTPS/TLS 1.3으로 암호화됩니다.</li>
+      <li><strong>저장 구간 암호화</strong>: GCS 저장 데이터는 AES-256으로 서버 측 암호화됩니다(자동).</li>
+      <li><strong>접근 통제</strong>: Firestore 보안 규칙을 통해 클라이언트의 직접 접근을 차단하며, 모든 데이터 접근은 인증된 서버 경로를 통해서만 이루어집니다.</li>
+      <li><strong>인증</strong>: Google OAuth 토큰을 서버에서 매 요청마다 검증합니다.</li>
+      <li><strong>최소 권한 원칙</strong>: 운영자는 서비스 운영에 필요한 최소한의 데이터에만 접근합니다.</li>
     </ul>
 
-    <h2>8. 개인정보처리방침의 변경</h2>
-    <p>본 방침이 변경되는 경우, 앱 내 공지 또는 본 페이지를 통해 사전에 안내합니다.</p>
+    <h2>9. 광고 식별자 및 행태정보</h2>
+    <ul>
+      <li>서비스는 Google AdMob을 통해 보상형 광고를 노출하며, 광고 식별자(AAID/IDFA)를 활용합니다.</li>
+      <li>이용자는 시스템 설정에서 <strong>광고 ID 재설정</strong> 또는 <strong>맞춤형 광고 거부</strong>를 선택할 수 있습니다. (Android: 설정 → Google → 광고 → 광고 ID 삭제)</li>
+    </ul>
 
-    <h2>9. 개인정보 보호 책임자 및 문의</h2>
+    <h2>10. 쿠키 및 유사 기술</h2>
+    <p>서비스는 모바일 앱이며 별도의 웹 쿠키를 사용하지 않습니다. 다만 앱 내부에 SharedPreferences 등 로컬 저장소를 사용하여 설정값과 인증 토큰을 저장합니다. 이는 기기 내에만 보관되며 외부로 전송되지 않습니다.</p>
+
+    <h2>11. GDPR 등 해외 이용자 권리 안내</h2>
+    <p>EU 거주자 등 GDPR 적용 대상 이용자께서는 아래 권리를 추가로 행사하실 수 있습니다.</p>
+    <ul>
+      <li>데이터 이동권 (Data Portability)</li>
+      <li>처리 제한권 (Right to Restriction)</li>
+      <li>자동화된 의사결정 거부권</li>
+      <li>감독기관에 이의 제기할 권리</li>
+    </ul>
+    <p>행사를 원하시는 경우 위 이메일로 요청해 주시기 바랍니다.</p>
+
+    <h2>12. 개정 안내</h2>
+    <p>본 방침은 법령·정책 또는 서비스 변경에 따라 개정될 수 있으며, 중요한 변경이 있을 경우 시행일 7일 전(이용자에게 불리한 변경의 경우 30일 전)부터 앱 공지 또는 이메일을 통해 안내드립니다.</p>
+    <ul>
+      <li>공고일자: 2026년 5월 3일</li>
+      <li>시행일자: 2026년 5월 3일</li>
+      <li>버전: v1.0</li>
+    </ul>
+
+    <h2>13. 권익침해 구제 방법</h2>
+    <p>개인정보 관련 분쟁이나 상담이 필요한 경우 아래 기관에 도움을 요청하실 수 있습니다.</p>
+    <ul>
+      <li><strong>개인정보분쟁조정위원회</strong>: 1833-6972 / www.kopico.go.kr</li>
+      <li><strong>개인정보침해신고센터 (KISA)</strong>: 118 / privacy.kisa.or.kr</li>
+      <li><strong>대검찰청 사이버수사과</strong>: 1301 / www.spo.go.kr</li>
+      <li><strong>경찰청 사이버수사국</strong>: 182 / cyberbureau.police.go.kr</li>
+    </ul>
+
     <div class="contact">
-      <p><strong>앱 이름</strong>: 하루얼굴 (Daily Face Journal)</p>
-      <p><strong>이메일</strong>: ghk8910@gmail.com</p>
-      <p>개인정보 관련 문의, 열람·정정·삭제 요청은 위 이메일로 연락해 주세요.</p>
+      <p><strong>문의처</strong></p>
+      <p>본 방침에 대해 궁금한 점이 있으시면 언제든 <strong>jkh200812394@gmail.com</strong>으로 문의해 주시기 바랍니다.</p>
+      <p style="margin-top: 8px; font-size: 13px; color: #888;">하루얼굴은 이용자의 신뢰를 가장 소중한 자산으로 여깁니다.</p>
     </div>
   </div>
 </body>
